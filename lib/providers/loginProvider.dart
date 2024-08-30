@@ -11,6 +11,7 @@ class LoginProvider with ChangeNotifier {
   final TextEditingController passwordController = TextEditingController();
   bool isPasswordVisible = false;
   bool rememberMe = false;
+
   User? get user => _user;
   bool get isLoggedIn => _isLoggedIn;
   bool get isLoading => _isLoading;
@@ -42,7 +43,7 @@ class LoginProvider with ChangeNotifier {
     final url = Uri.parse(
         'https://my-json-server.typicode.com/hameezk/HiringTask/login');
     final response =
-        await http.get(url, headers: {'Content-Type': 'application/json'});
+    await http.get(url, headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
@@ -59,13 +60,13 @@ class LoginProvider with ChangeNotifier {
   }
 
   void togglePasswordVisibility() {
-    _isLoading = !isLoading;
+    isPasswordVisible = !isPasswordVisible;
     notifyListeners();
   }
 
   void toggleRememberMe(bool? value) {
     if (value != null) {
-      _isLoading = value;
+      rememberMe = value;
       notifyListeners();
     }
   }

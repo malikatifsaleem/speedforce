@@ -1,0 +1,1 @@
+ C:\\Users\\Lenovo\\Downloads\\SPEEDFORCETASK\\.dart_tool\\flutter_build\\50d2635310889700a00df4cded193774\\native_assets.yaml: 

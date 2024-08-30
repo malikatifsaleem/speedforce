@@ -1,0 +1,16 @@
+com.speedforce.task.app-jetified-window-1.0.0-beta04-0 C:\Users\Lenovo\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\res
+com.speedforce.task.app-jetified-datastore-1.0.0-1 C:\Users\Lenovo\.gradle\caches\transforms-3\646960d27e4b63486661f5a43f7e9782\transformed\jetified-datastore-1.0.0\res
+com.speedforce.task.app-jetified-annotation-experimental-1.1.0-2 C:\Users\Lenovo\.gradle\caches\transforms-3\6c0c163cc77ae6c91f9f7dfcd179c29c\transformed\jetified-annotation-experimental-1.1.0\res
+com.speedforce.task.app-jetified-datastore-preferences-1.0.0-3 C:\Users\Lenovo\.gradle\caches\transforms-3\71a9f9f0ed7a9f2129314b24779261ac\transformed\jetified-datastore-preferences-1.0.0\res
+com.speedforce.task.app-core-1.6.0-4 C:\Users\Lenovo\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\res
+com.speedforce.task.app-jetified-window-java-1.0.0-beta04-5 C:\Users\Lenovo\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
+com.speedforce.task.app-debug-6 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\debug\res
+com.speedforce.task.app-main-7 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\res
+com.speedforce.task.app-pngs-8 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\generated\res\pngs\debug
+com.speedforce.task.app-resValues-9 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\generated\res\resValues\debug
+com.speedforce.task.app-rs-10 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\generated\res\rs\debug
+com.speedforce.task.app-mergeDebugResources-11 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.speedforce.task.app-mergeDebugResources-12 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.speedforce.task.app-merged_res-13 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\merged_res\debug
+com.speedforce.task.app-packaged_res-14 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\packaged_res\debug
+com.speedforce.task.app-packaged_res-15 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\shared_preferences_android\intermediates\packaged_res\debug

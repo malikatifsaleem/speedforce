@@ -53,138 +53,141 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: screenHeight * 0.03),
               Form(
                 key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextFormField(
-                      controller: authProvider.emailController,
-                      hintText: 'Email',
-                      icon: Icons.email,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
-                        if (!emailRegex.hasMatch(value)) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    CustomTextFormField(
-                      controller: authProvider.passwordController,
-                      hintText: 'Password',
-                      icon: Icons.lock,
-                      obscureText: !authProvider.isPasswordVisible,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          authProvider.isPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        onPressed: authProvider.togglePasswordVisibility,
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Checkbox(
-                          value: authProvider.rememberMe,
-                          onChanged: authProvider.toggleRememberMe,
-                          activeColor: Colors.red,
-                          checkColor: Colors.white,
-                        ),
-                        Text("Remember me"),
-                      ],
-                    ),
-
-                    SizedBox(height: screenHeight * 0.02),
-                    CustomAuthButton(
-                      label: 'Log In',
-                      isLoading: authProvider.isLoading,
-                      onPressed: () async {
-                        if (_formKey.currentState?.validate() ?? false) {
-                          authProvider.setLoading(true);
-                          try {
-                            await authProvider.login(
-                              authProvider.emailController.text,
-                              authProvider.passwordController.text,
-                            );
-                            authProvider.setLoading(false);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Login Successful!'),
-                                backgroundColor: Colors.green,
-                              ),
-                            );
-                            Navigator.of(context).pushReplacementNamed('/home');
-                          } catch (e) {
-                            authProvider.setLoading(false);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Login Failed: $e'),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomTextFormField(
+                        controller: authProvider.emailController,
+                        hintText: 'Email',
+                        icon: Icons.email,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email';
                           }
-                        }
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    Center(
-                      child: TextButton(
-                        onPressed: () {
-                          // Handle forgot password
+                          final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                          if (!emailRegex.hasMatch(value)) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
                         },
-                        child: Text(
-                          "Forgot the password?",
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: screenWidth * 0.04,
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      CustomTextFormField(
+                        controller: authProvider.passwordController,
+                        hintText: 'Password',
+                        icon: Icons.lock,
+                        obscureText: !authProvider.isPasswordVisible,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            authProvider.isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: authProvider.togglePasswordVisibility,
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Checkbox(
+                            value: authProvider.rememberMe,
+                            onChanged: authProvider.toggleRememberMe,
+                            activeColor: Colors.red,
+                            checkColor: Colors.white,
+                          ),
+                          Text("Remember me"),
+                        ],
+                      ),
+
+                      SizedBox(height: screenHeight * 0.02),
+                      CustomAuthButton(
+                        label: 'Log In',
+                        isLoading: authProvider.isLoading,
+                        onPressed: () async {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            authProvider.setLoading(true);
+                            try {
+                              await authProvider.login(
+                                authProvider.emailController.text,
+                                authProvider.passwordController.text,
+                              );
+                              authProvider.setLoading(false);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Login Successful!'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                              Navigator.of(context).pushReplacementNamed('/home');
+                            } catch (e) {
+                              authProvider.setLoading(false);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Login Failed: $e'),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          }
+                        },
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      Center(
+                        child: TextButton(
+                          onPressed: () {
+                            // Handle forgot password
+                          },
+                          child: Text(
+                            "Forgot the password?",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: screenWidth * 0.04,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-                    AuthButtons(
-                      onFacebookTap: authProvider.signInWithFacebook,
-                      onGoogleTap: authProvider.signInWithGoogle,
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-                    Center(
-                      child: Text.rich(
-                        TextSpan(
-                          text: "Don't have an account? ",
-                          style: TextStyle(
-                              fontSize: screenWidth * 0.04,
-                              color: Colors.black),
-                          children: [
-                            TextSpan(
-                                text: "Sign up",
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: screenWidth * 0.04),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushReplacementNamed(
-                                        context, '/signup');
-                                  })
-                          ],
+                      SizedBox(height: screenHeight * 0.03),
+                      AuthButtons(
+                        onFacebookTap: authProvider.signInWithFacebook,
+                        onGoogleTap: authProvider.signInWithGoogle,
+                      ),
+                      SizedBox(height: screenHeight * 0.03),
+                      Center(
+                        child: Text.rich(
+                          TextSpan(
+                            text: "Don't have an account? ",
+                            style: TextStyle(
+                                fontSize: screenWidth * 0.04,
+                                color: Colors.black),
+                            children: [
+                              TextSpan(
+                                  text: "Sign up",
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: screenWidth * 0.04),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/signup');
+                                    })
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                  ],
+                      SizedBox(height: screenHeight * 0.02),
+                    ],
+                  ),
                 ),
               ),
             ],

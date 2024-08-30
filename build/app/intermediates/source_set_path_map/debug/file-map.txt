@@ -12,5 +12,6 @@ com.speedforce.task.app-rs-10 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app
 com.speedforce.task.app-mergeDebugResources-11 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
 com.speedforce.task.app-mergeDebugResources-12 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
 com.speedforce.task.app-merged_res-13 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\app\intermediates\merged_res\debug
-com.speedforce.task.app-packaged_res-14 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\packaged_res\debug
-com.speedforce.task.app-packaged_res-15 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\shared_preferences_android\intermediates\packaged_res\debug
+com.speedforce.task.app-packaged_res-14 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\libphonenumber_plugin\intermediates\packaged_res\debug
+com.speedforce.task.app-packaged_res-15 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\packaged_res\debug
+com.speedforce.task.app-packaged_res-16 C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\shared_preferences_android\intermediates\packaged_res\debug

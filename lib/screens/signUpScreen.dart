@@ -1,7 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:task/providers/loginProvider.dart';
 import '../customWidgets/CustomTextFormField.dart';
 import '../customWidgets/RegisterationButtons.dart';
@@ -14,10 +15,14 @@ class SignupScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController businessNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController genderController = TextEditingController(); // New controller
+  String? _selectedGender;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  PhoneNumber _phoneNumber = PhoneNumber(isoCode: 'US');
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +117,60 @@ class SignupScreen extends StatelessWidget {
           ),
           SizedBox(height: 16),
           CustomTextFormField(
+            controller: genderController,
+            hintText: 'Gender',
+            hintStyle: TextStyle(color: Colors.black38),
+            icon: Icons.person,
+            suffixIcon: DropdownButtonFormField<String>(
+              value: _selectedGender,
+              items: ['Male', 'Female', 'Other'].map((String gender) {
+                return DropdownMenuItem<String>(
+                  value: gender,
+                  child: Text(gender),
+
+                );
+              }).toList(),
+              onChanged: (value) {
+                _selectedGender = value;
+                genderController.text = value!;
+              },
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+              ),
+
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select your gender';
+                }
+                return null;
+              },
+            ),
+          ),
+          SizedBox(height: 16),
+          InternationalPhoneNumberInput(
+            onInputChanged: (PhoneNumber number) {
+              _phoneNumber = number;
+            },
+            inputDecoration: InputDecoration(
+              hintText: 'Phone Number',
+              border: OutlineInputBorder(),
+              contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+            selectorConfig: SelectorConfig(
+              showFlags: true, // Show country flags
+              // showCountryName: false, // Hide country names
+              // useEmoji: true, // Use emoji flags if desired
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your phone number';
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 20,),
+          CustomTextFormField(
             controller: passwordController,
             hintText: 'Password',
             icon: Icons.lock,
@@ -143,6 +202,8 @@ class SignupScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 16),
+
+          SizedBox(height: 16),
           CustomAuthButton(
             label: 'Sign Up',
             isLoading: authProvider.isLoading,
@@ -168,8 +229,7 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceProviderForm(
-      BuildContext context, LoginProvider authProvider) {
+  Widget _buildServiceProviderForm(BuildContext context, LoginProvider authProvider) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
       child: Column(

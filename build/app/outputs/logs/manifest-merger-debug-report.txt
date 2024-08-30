@@ -17,6 +17,7 @@ INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\Andr
 INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml:1:1-35:12
 INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml:1:1-35:12
 MERGED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml:1:1-35:12
+MERGED from [:libphonenumber_plugin] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\libphonenumber_plugin\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:shared_preferences_android] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.datastore:datastore-preferences:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\71a9f9f0ed7a9f2129314b24779261ac\transformed\jetified-datastore-preferences-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -65,6 +66,8 @@ uses-sdk
 INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Lenovo\Downloads\SPEEDFORCETASK\android\app\src\main\AndroidManifest.xml
+MERGED from [:libphonenumber_plugin] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\libphonenumber_plugin\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:libphonenumber_plugin] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\libphonenumber_plugin\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] C:\Users\Lenovo\Downloads\SPEEDFORCETASK\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

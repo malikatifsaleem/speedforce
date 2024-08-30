@@ -158,6 +158,7 @@ id text2
 id time
 id title
 id view_tree_lifecycle_owner
+id view_tree_view_model_store_owner
 integer status_bar_notification_info_maxnum
 layout custom_dialog
 layout ime_base_split_test_activity

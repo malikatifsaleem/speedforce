@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:task/providers/loginProvider.dart';
 
 import '../customWidgets/bottomNavigationBar.dart';
@@ -252,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ElevatedButton.icon(
                         onPressed: () {
                           final String referralLink = "https://example.com/referral";
-                          // Share.share("Join this amazing platform using my referral link: $referralLink");
+                          Share.share("Join this amazing platform using my referral link: $referralLink");
                         },
                         icon: Icon(
                           Icons.send,

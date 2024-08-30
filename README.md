@@ -15,7 +15,7 @@ Clone the Repository
 
 bash
 Copy code
-git clone <REPOSITORY_URL>
+git clone https://github.com/malikatifsaleem/speedforce.git
 cd <REPOSITORY_DIRECTORY>
 Install Dependencies
 

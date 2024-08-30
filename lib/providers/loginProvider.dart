@@ -17,29 +17,32 @@ class LoginProvider with ChangeNotifier {
 
   void setLoading(bool value) {
     _isLoading = value;
-    notifyListeners(); // Notifies listeners to rebuild UI if necessary
+    notifyListeners();
   }
 
   Future<void> login(String email, String password) async {
     setLoading(true);
-    final url = Uri.parse('https://my-json-server.typicode.com/hameezk/HiringTask/login');
-    final Map<String, dynamic> requestBody = {'email': email, 'password': password};
-    final response = await http.get(url, headers: {'Content-Type': 'application/json'});
 
-    setLoading(false);
-    final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-    if (response.statusCode == 200) {
-      _user = User.fromJson(jsonResponse['data'] as Map<String, dynamic>);
+    const staticEmail = 'user@speedforce.com';
+    const staticPassword = 'password';
+
+    if (email == staticEmail && password == staticPassword) {
+      _user = User(email: staticEmail);
       _isLoggedIn = true;
       notifyListeners();
     } else {
-      throw Exception('Failed to login');
+      setLoading(false);
+      throw Exception('Invalid email or password');
     }
+
+    setLoading(false);
   }
 
   static Future<User> fetchUserData() async {
-    final url = Uri.parse('https://my-json-server.typicode.com/hameezk/HiringTask/login');
-    final response = await http.get(url, headers: {'Content-Type': 'application/json'});
+    final url = Uri.parse(
+        'https://my-json-server.typicode.com/hameezk/HiringTask/login');
+    final response =
+        await http.get(url, headers: {'Content-Type': 'application/json'});
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
@@ -67,11 +70,7 @@ class LoginProvider with ChangeNotifier {
     }
   }
 
-  void signInWithGoogle() {
-    // Handle Google Sign-In
-  }
+  void signInWithGoogle() {}
 
-  void signInWithFacebook() {
-    // Handle Facebook Sign-In
-  }
+  void signInWithFacebook() {}
 }

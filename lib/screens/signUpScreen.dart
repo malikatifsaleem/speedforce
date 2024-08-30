@@ -3,24 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task/providers/loginProvider.dart';
-
 import '../customWidgets/CustomTextFormField.dart';
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import '../customWidgets/RegisterationButtons.dart';
 import '../customWidgets/customAuthButtons.dart';
 import '../customWidgets/signUp_prompt.dart';
 
 class SignupScreen extends StatelessWidget {
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-  final TextEditingController businessNameController =
-      TextEditingController(); // For Service Provider
+  final TextEditingController businessNameController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,7 @@ class SignupScreen extends StatelessWidget {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.grey),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/login');
             },
           ),
           title: Text(
@@ -57,11 +54,14 @@ class SignupScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            _buildConsumerForm(context, authProvider),
-            _buildServiceProviderForm(context, authProvider),
-          ],
+        body: Form(
+          key: _formKey,
+          child: TabBarView(
+            children: [
+              _buildConsumerForm(context, authProvider),
+              _buildServiceProviderForm(context, authProvider),
+            ],
+          ),
         ),
       ),
     );
@@ -73,15 +73,27 @@ class SignupScreen extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormField(
-            controller: nameController,
+            controller: firstNameController,
             hintText: 'First Name',
             icon: Icons.person,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your first name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           CustomTextFormField(
-            controller: nameController,
+            controller: lastNameController,
             hintText: 'Last Name',
             icon: Icons.person,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your last name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           CustomTextFormField(
@@ -92,20 +104,11 @@ class SignupScreen extends StatelessWidget {
               if (value == null || value.isEmpty) {
                 return 'Please enter your email';
               }
+              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                return 'Please enter a valid email';
+              }
               return null;
             },
-          ),
-          SizedBox(height: 16),
-          CustomTextFormField(
-            controller: nameController,
-            hintText: 'Gender',
-            icon: Icons.person,
-          ),
-          SizedBox(height: 16),
-          CustomTextFormField(
-            controller: nameController,
-            hintText: 'Phone Number',
-            icon: Icons.phone,
           ),
           SizedBox(height: 16),
           CustomTextFormField(
@@ -116,6 +119,9 @@ class SignupScreen extends StatelessWidget {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your password';
+              }
+              if (value.length < 6) {
+                return 'Password must be at least 6 characters long';
               }
               return null;
             },
@@ -137,11 +143,17 @@ class SignupScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 16),
-
           CustomAuthButton(
-              label: 'Sign Up',
-              isLoading: authProvider.isLoading,
-              onPressed: () async {}),
+            label: 'Sign Up',
+            isLoading: authProvider.isLoading,
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                // Navigate to the home screen after validation
+                Navigator.pushReplacementNamed(context, '/home');
+              }
+            },
+          ),
+          SizedBox(height: 16),
           AuthButtons(
             onFacebookTap: authProvider.signInWithFacebook,
             onGoogleTap: authProvider.signInWithGoogle,
@@ -162,34 +174,40 @@ class SignupScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
       child: Column(
         children: [
-          // CustomTextFormField(
-          //   controller: businessNameController,
-          //   hintText: 'Business Name',
-          //   icon: Icons.business,
-          // ),
-          // SizedBox(height: 16),
-          // CustomTextFormField(
-          //   controller: nameController,
-          //   hintText: 'First Name',
-          //   icon: Icons.person,
-          // ),
-          // ... other form fields ...
           CustomTextFormField(
             controller: businessNameController,
             hintText: 'Business Name',
             icon: Icons.business,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your business name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           CustomTextFormField(
-            controller: nameController,
+            controller: firstNameController,
             hintText: 'First Name',
             icon: Icons.person,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your first name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           CustomTextFormField(
-            controller: nameController,
+            controller: lastNameController,
             hintText: 'Last Name',
             icon: Icons.person,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your last name';
+              }
+              return null;
+            },
           ),
           SizedBox(height: 16),
           CustomTextFormField(
@@ -200,20 +218,11 @@ class SignupScreen extends StatelessWidget {
               if (value == null || value.isEmpty) {
                 return 'Please enter your email';
               }
+              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                return 'Please enter a valid email';
+              }
               return null;
             },
-          ),
-          SizedBox(height: 16),
-          CustomTextFormField(
-            controller: nameController,
-            hintText: 'Gender',
-            icon: Icons.person,
-          ),
-          SizedBox(height: 16),
-          CustomTextFormField(
-            controller: nameController,
-            hintText: 'Phone Number',
-            icon: Icons.phone,
           ),
           SizedBox(height: 16),
           CustomTextFormField(
@@ -224,6 +233,9 @@ class SignupScreen extends StatelessWidget {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your password';
+              }
+              if (value.length < 6) {
+                return 'Password must be at least 6 characters long';
               }
               return null;
             },
@@ -245,10 +257,17 @@ class SignupScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 16),
-    CustomAuthButton(
-    label: 'Sign Up',
-    isLoading: authProvider.isLoading,
-    onPressed: () async {}),
+          CustomAuthButton(
+            label: 'Sign Up',
+            isLoading: authProvider.isLoading,
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                // Navigate to the home screen after validation
+                Navigator.pushReplacementNamed(context, '/home');
+              }
+            },
+          ),
+          SizedBox(height: 16),
           AuthButtons(
             onFacebookTap: authProvider.signInWithFacebook,
             onGoogleTap: authProvider.signInWithGoogle,
@@ -263,98 +282,3 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       body: Padding(
-//         padding: const EdgeInsets.all(20.0),
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Row(
-//               children: [
-//                 IconButton(
-//                   icon: Icon(Icons.arrow_back, color: Colors.black),
-//                   onPressed: () {
-//                     Navigator.pop(context);
-//                   },
-//                 ),
-//
-//                Text(
-//                 "Create Account",
-//                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//               ),
-//       ]),
-//             SizedBox(height: 20),
-//             TextFormField(
-//               controller: nameController,
-//               decoration: InputDecoration(
-//                 labelText: 'Name',
-//                 prefixIcon: Icon(Icons.person),
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//             TextFormField(
-//               controller: emailController,
-//               decoration: InputDecoration(
-//                 labelText: 'Email',
-//                 prefixIcon: Icon(Icons.email),
-//               ),
-//               keyboardType: TextInputType.emailAddress,
-//             ),
-//             SizedBox(height: 20),
-//             TextFormField(
-//               controller: passwordController,
-//               decoration: InputDecoration(
-//                 labelText: 'Password',
-//                 prefixIcon: Icon(Icons.lock),
-//               ),
-//               obscureText: true,
-//             ),
-//             SizedBox(height: 20),
-//             TextFormField(
-//               controller: confirmPasswordController,
-//               decoration: InputDecoration(
-//                 labelText: 'Confirm Password',
-//                 prefixIcon: Icon(Icons.lock),
-//               ),
-//               obscureText: true,
-//             ),
-//             SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 // Validate and signup action
-//               },
-//               child: Text("Sign Up"),
-//             ),
-//             SizedBox(height: 10),
-//             Text("or continue with"),
-//             SizedBox(height: 10),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 IconButton(
-//                   onPressed: () {},
-//                   icon: Icon(Icons.facebook),
-//                 ),
-//                 IconButton(
-//                   onPressed: () {},
-//                   icon: Icon(Icons.person),
-//                 ),
-//               ],
-//             ),
-//             SizedBox(height: 20),
-//             TextButton(
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//               child: Text("Already have an account? Log in"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

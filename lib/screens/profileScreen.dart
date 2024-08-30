@@ -95,6 +95,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          IconButton(
+                            icon: Icon(Icons.arrow_back),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, "/home"); // This navigates back to the previous screen
+                            },
+                          ),
                           Expanded(
                             child: Text(
                               'My Profile',
@@ -126,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             CircleAvatar(
                               radius: screenWidth * 0.15,
-                              backgroundImage: NetworkImage(data.avatar),
+                              backgroundImage: NetworkImage(data.avatar!),
                             ),
                             SizedBox(height: screenHeight * 0.02),
                             Text(
@@ -139,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              data.email,
+                              data.email!,
                               style: GoogleFonts.urbanist(
                                 fontWeight: FontWeight.w600,
                                 fontSize: screenWidth * 0.035,

@@ -351,9 +351,9 @@
     },
     {
       "name": "web",
-      "rootUri": "file:///C:/Users/Lenovo/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.0.0",
+      "rootUri": "file:///C:/Users/Lenovo/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.5.1",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.3"
     },
     {
       "name": "xdg_directories",
@@ -374,7 +374,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-08-29T18:30:35.273210Z",
+  "generated": "2024-08-30T11:03:49.086587Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/src/flutter",

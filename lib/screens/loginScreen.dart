@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +35,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: screenHeight * 0.02),
               Center(
                 child: Image.asset(
-                  'assets/logo.png', // Your logo asset path
+                  'assets/logo.png',
                   width: screenWidth * 0.6,
                 ),
               ),
@@ -96,6 +95,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: screenHeight * 0.02),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Checkbox(
                           value: authProvider.rememberMe,
@@ -103,11 +104,10 @@ class LoginScreen extends StatelessWidget {
                           activeColor: Colors.red,
                           checkColor: Colors.white,
                         ),
-                        Expanded(
-                          child: Text("Remember me"),
-                        ),
+                        Text("Remember me"),
                       ],
                     ),
+
                     SizedBox(height: screenHeight * 0.02),
                     CustomAuthButton(
                       label: 'Log In',

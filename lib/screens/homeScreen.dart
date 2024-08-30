@@ -51,18 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Stack(
                     children: [
-                      Positioned(
-                        left: -9,
-                        top: -5.5,
-                        child: Opacity(
-                          opacity: 0.2,
-                          child: SvgPicture.asset(
-                            'assets/vectors/group_13_x2.svg',
-                            width: 295,
-                            height: 199.5,
-                          ),
-                        ),
-                      ),
+
 
                       Positioned(
                         left: 16, // Adjust the left margin
@@ -176,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 SvgPicture.asset(
-                                  'assets/vectors/container_x2.svg',
+                                  'assets/image1.svg',
                                   width: 176,
                                   height: 149,
                                 ),

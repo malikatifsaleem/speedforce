@@ -13,24 +13,18 @@ Dart SDK
 Setup Instructions
 Clone the Repository
 
-bash
-Copy code
 git clone https://github.com/malikatifsaleem/speedforce.git
 cd <REPOSITORY_DIRECTORY>
 Install Dependencies
 
 Run the following command to get all the necessary packages:
 
-bash
-Copy code
 flutter pub get
 Run the App
 
 Use the following command to launch the app:
-
-bash
-Copy code
 flutter run
+
 Screens and Functionality
 1. Login Screen
    Purpose: Allows users to log in using static credentials.
@@ -44,6 +38,7 @@ Screens and Functionality
    Static Credentials:
    Email: user@speedforce.com
    Password: password
+
 2. Signup Screen
    Purpose: Enables new users to register for the application.
    Features:
@@ -55,12 +50,14 @@ Screens and Functionality
    Email should be in a valid email format.
    Password should meet minimum length and security requirements.
    Confirm password must match the password field.
+
 3. Home Screen
    Purpose: Serves as the landing page after successful login or signup.
    Features:
    Displays a welcome message with the static email (user@speedforce.com).
    Header with basic details and total earnings.
    Invitation message to join the app.
+
 4. Profile Screen
    Purpose: Displays user profile details.
    Features:
